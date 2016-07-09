@@ -1,8 +1,13 @@
 <?php
+    include_once '../control/UsuarioControl.php';
+    $usuarioControl = new UsuarioControl();
+    
+?>
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+<?php
+
+foreach ($usuarioControl->listarTodos() as $usuario) {
+    echo $usuario->email;
+}
+?>
 

@@ -1,16 +1,6 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of Usuario
- *
- * @author PHP - MySQL
- */
+include_once '../db/Conexao.php';
 class Usuario {
    private $id ;
    private $nome;
@@ -47,6 +37,13 @@ class Usuario {
 
    function setSenha($senha) {
        $this->senha = $senha;
+   }
+   
+   public function listarTodosUsuarios() {
+       $sql = "select * from usuarios";
+       $query = Conexao::prepare($sql);
+       $query->execute();
+       return $query->fetchAll();
    }
 
 
