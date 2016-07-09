@@ -6,18 +6,16 @@
  * and open the template in the editor.
  */
 
-/**
- * Description of EspecialidadeControl
- *
- * @author PHP - MySQL
- */
+include_once '../model/Especialidade.php';
+
 class EspecialidadeControl {
     public function inserir() {
         
     }
     
     public function listarTodos(){
-        
+       $especialidade = new Especialidade();
+       return $especialidade->listarTodasEspecialidades();
     }
     
     public function buscar(){
