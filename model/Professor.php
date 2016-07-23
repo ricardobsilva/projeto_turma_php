@@ -11,9 +11,11 @@
  *
  * @author PHP - MySQL
  */
+require_once '../db/Conexao.php';
 class Professor {
     private $id;
     private $nome;
+    private $numero_contribuinte;
     private $nascimento;
     private $carga_horaria;
     private $especialidade_id;
@@ -21,7 +23,16 @@ class Professor {
     function getId() {
         return $this->id;
     }
+    
+    function getNumero_contribuinte() {
+        return $this->numero_contribuinte;
+    }
 
+    function setNumero_contribuinte($numero_contribuinte) {
+        $this->numero_contribuinte = $numero_contribuinte;
+    }
+
+    
     function getNome() {
         return $this->nome;
     }
@@ -59,6 +70,19 @@ class Professor {
     }
 
 
-    
+   function salvar(){
+       $sql = "INSERT INTO professores (numero_contribuinte, nome , nascimento, carga_horaria, especialidade_id)"
+               . " values(:numero_contribuinte, :nome , :nascimento, :carga_horaria, :especialidade_id)" ; 
+       
+       $query = Conexao::prepare($sql);
+       $query->bindValue(":numero_contribuinte", $this->getNumero_contribuinte());
+       $query->bindValue(":nome", $this->getNome());
+       $query->bindValue(":nascimento", $this->getNascimento());
+       $query->bindValue(":carga_horaria", $this->getCarga_horaria());
+       $query->bindValue(":especialidade_id", $this->getEspecialidade_id());   
+       
+       $query->execute();
+   }
+   
     
 }

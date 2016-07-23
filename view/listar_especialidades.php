@@ -10,7 +10,7 @@ $especialidadeControl = new EspecialidadeControl();
     
     <h1>Especialidades</h1>
     
-    <a href="" class="pull-right btn btn-primary btn-xs">cadastrar especialidade</a>
+    <a href="cadastrar_especialidade.php" class="pull-right btn btn-primary btn-xs">cadastrar especialidade</a>
     
     <table class="table table-hover" >
         <tr>
