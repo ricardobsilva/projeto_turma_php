@@ -29,4 +29,12 @@ class Especialidade {
         return $query->fetchAll();
     }
     
+    public function salvar(){
+        $sql = "INSERT INTO especialidades(nome) VALUES(:nome)";
+        $query = Conexao::prepare($sql);
+        $query->bindValue(":nome", $this->getNome());
+        $query->execute();
+    }
+   
 }
+ 
