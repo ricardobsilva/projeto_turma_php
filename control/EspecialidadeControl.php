@@ -24,15 +24,27 @@ class EspecialidadeControl {
        return $especialidade->listarTodasEspecialidades();
     }
     
-    public function buscar(){
-        
+    public function buscar($id){
+        $especialidade = new Especialidade();
+        return $especialidade->buscar($id);
+         
     }
     
     public function editar(){
-        
+        $especialidade = new Especialidade();    
+
+        $nome = $_POST['nome_especialidade']; 
+        $id = $_POST['id'];
+
+
+        $especialidade->setNome($nome);
+        $especialidade->atualizar($id);
+           
     }
     
     public function deletar(){
-        
+        $especialidade = new Especialidade();
+        $id = $_GET['id'];
+        $especialidade->deletar($id);
     }
 }

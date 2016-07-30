@@ -35,6 +35,29 @@ class Especialidade {
         $query->bindValue(":nome", $this->getNome());
         $query->execute();
     }
+
+    public function buscar($id = null){
+        $sql = 'SELECT * FROM especialidades WHERE id = :id ';
+        $query = Conexao::prepare($sql);
+        $query->bindValue(":id", $id);
+        $query->execute();
+        return $query->fetch();
+    }
+
+    public function atualizar($id){
+        $sql = "UPDATE especialidades SET nome= :nome where id=:id ";
+        $query = Conexao::prepare($sql);
+        $query->bindValue(":id", $id);
+        $query->bindValue(":nome", $this->getNome());
+        $query->execute();
+    }
+
+    public function deletar($id){
+        $sql = "DELETE FROM especialidades WHERE id= :id";
+        $query = Conexao::prepare($sql);
+        $query->bindValue(":id", $id);
+        $query->execute();
+    }
    
 }
  

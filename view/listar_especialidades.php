@@ -2,8 +2,15 @@
 include_once '../style/template.php';
 include_once '../control/EspecialidadeControl.php';
 $especialidadeControl = new EspecialidadeControl();
+    
+    if(isset($_GET['id'])){
+         $especialidadeControl->deletar(); 
+        ?>
+            <div class="alert alert-danger" role="alert"> deletado com sucesso</div>  
+        <?php
+    }
 
-//print_r($especialidadeControl->listarTodos());
+
 ?>
 <div class="col-sm-10 col-sm-offset-1">
     
@@ -26,9 +33,9 @@ $especialidadeControl = new EspecialidadeControl();
                 <td><?php echo $especialidade->nome; ?></td>
                 <td>
                     <div class="pull-right">
-                        <a href="">editar</a> 
+                        <?php echo "<a href='editar_especialidade.php?acao=editar&id=".$especialidade->id."'>editar</a> "?>
                         |
-                        <a href="">deletar</a>
+                        <?php echo "<a href='listar_especialidades.php?acao=deletar&id=".$especialidade->id."'>deletar</a> "?>
                     </div>
                 </td>
             </tr>
