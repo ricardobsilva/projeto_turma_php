@@ -34,7 +34,8 @@ class ProfessorControl {
     }
     
     public function listarTodos(){
-        
+        $professor = new Professor();
+        return $professor->buscarTodos();
     }
     
     public function buscar(){

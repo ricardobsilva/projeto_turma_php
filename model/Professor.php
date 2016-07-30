@@ -84,5 +84,13 @@ class Professor {
        $query->execute();
    }
    
+   function buscarTodos(){
+    $sql = "SELECT professor.id, professor.nome as 'professor_nome', especialidade.nome as 'nome_especialidade' FROM professores professor
+            INNER JOIN especialidades especialidade
+            ON (professor.especialidade_id = especialidade.id)";
+    $query = Conexao::prepare($sql);
+    $query->execute();
+    return $query->fetchAll();
+   }
     
 }
