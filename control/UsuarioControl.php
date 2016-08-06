@@ -22,4 +22,19 @@ class UsuarioControl {
     public function deletar(){
         
     }
+
+
+    public function login(){
+        $email = $_POST['email'];
+        $senha = $_POST['senha'];
+     
+        $usuario = new Usuario();
+        $quantidadeEncontradaDeUsuarios = $usuario->logar($email, $senha);
+
+        if ($quantidadeEncontradaDeUsuarios > 0){
+            header('Location: listar_especialidades.php');
+        }else{
+            header('Location: login.php');
+        }
+    }
 }
